@@ -44,6 +44,7 @@ jobs:
           name: Build front-end
           command: |
             cd frontend
+            npm update
             npm install --no-package-lock
             npm run build
 
@@ -78,6 +79,7 @@ jobs:
           name: run front-end tests
           command: |
             cd frontend
+            npm update
             npm install --no-package-lock
             npm run test
 
