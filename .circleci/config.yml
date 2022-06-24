@@ -44,8 +44,7 @@ jobs:
           name: Build front-end
           command: |
             cd frontend
-            npm update
-            npm install
+            npm install --no-package-lock
             npm run build
 
       - save_cache:
@@ -79,8 +78,7 @@ jobs:
           name: run front-end tests
           command: |
             cd frontend
-            npm update
-            npm install
+            npm install --no-package-lock
             npm run test
 
       # - save_cache:
