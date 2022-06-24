@@ -47,7 +47,6 @@ jobs:
             npm update
             npm install
             npm run build
-
       - save_cache:
           paths: [frontend/node_modules]
           key: frontend-build
@@ -101,9 +100,9 @@ jobs:
             cd backend
             npm install
             npm run test
-  - save_cache:
-      paths: [backend/node_modules]
-      key: backend-build
+      - save_cache:
+          paths: [backend/node_modules]
+          key: backend-build
 
   scan-frontend:
     docker:
@@ -124,6 +123,9 @@ jobs:
     docker:
       - image: circleci/node:13.8.0
     steps:
+      -checkout
+      - restore_cache:
+          keys: [backend-build]
       - run:
           name: run npm audits on backend
           command: |
