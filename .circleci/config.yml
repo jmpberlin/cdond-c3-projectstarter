@@ -143,12 +143,12 @@ jobs:
       - run:
           name: install gzip
           command: |
-            sudo apt update
-            sudo apt -y install gzip
+            apt update
+            apt -y install gzip
       - run:
           name: install tar
           command: |
-            sudo yum -y install tar
+            yum -y install tar
       - run:
           name: Ensure back-end infrastructure exists
           command: |
