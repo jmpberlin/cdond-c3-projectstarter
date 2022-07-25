@@ -148,7 +148,7 @@ jobs:
       - run:
           name: install tar
           command: |
-
+            sudo yum -y install tar
       - run:
           name: Ensure back-end infrastructure exists
           command: |
