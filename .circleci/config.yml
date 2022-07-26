@@ -231,6 +231,10 @@ jobs:
           name: install gzip
           command: |
             sudo npm install -g gzip
+      - run: 
+          name: install aws-cli
+          command: | 
+            sudo npm install -g aws-cli
       - attach_workspace:
           at: ~/
       - run:
