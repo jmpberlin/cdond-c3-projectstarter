@@ -222,7 +222,7 @@ jobs:
       - run:
           name: install tar & gzip
           command: |
-            npm install -g tar
+            sudo npm install -g tar
       # - run:
       #     name: install npm & node
       #     command: |
@@ -230,7 +230,7 @@ jobs:
       - run:
           name: install gzip
           command: |
-            npm install -g gzip
+            sudo npm install -g gzip
       - attach_workspace:
           at: ~/
       - run:
