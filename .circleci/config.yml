@@ -221,18 +221,10 @@ jobs:
           name: install tar & gzip
           command: |
             sudo npm install -g tar
-      # - run:
-      #     name: install npm & node
-      #     command: |
-      #       yum -y install node npm
       - run:
           name: install gzip
           command: |
             sudo npm install -g gzip
-      # - run: 
-      #     name: install aws-cli
-      #     command: | 
-      #       sudo npm install -g aws-cli
       - attach_workspace:
           at: ~/
       - run:
@@ -250,7 +242,8 @@ jobs:
             npm install
             npm run build
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
-          # aws s3 cp dist s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7} --recursive
+        # hardcoded the former s3 bucket into the script for test purposes. later replace it with: s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
+            aws s3 cp dist s3://udapeople-eb6a559 --recursive
 #       # Here's where you will add some code to rollback on failure
 #   deploy-backend:
 #     docker:
