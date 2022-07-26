@@ -1,2 +1,2 @@
 [web]
-ec2-34-205-16-42.compute-1.amazonaws.com
+34.205.16.42
