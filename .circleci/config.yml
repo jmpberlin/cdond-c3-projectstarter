@@ -170,7 +170,7 @@ jobs:
       - run:
           name: read the inventory file to the console
           command: |
-            cat ~/project/.circleci/ansible.txt
+            cat ~/project/.circleci/ansible/inventory.txt
       - persist_to_workspace:
           root: ~/
           paths:
