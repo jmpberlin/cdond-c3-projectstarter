@@ -222,11 +222,15 @@ jobs:
       - run:
           name: install tar & gzip
           command: |
-            yum -y install tar gzip
+            npm install -g tar
       # - run:
       #     name: install npm & node
       #     command: |
       #       yum -y install node npm
+      - run:
+          name: install gzip
+          command: |
+            npm install -g gzip
       - attach_workspace:
           at: ~/
       - run:
