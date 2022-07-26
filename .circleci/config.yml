@@ -198,7 +198,7 @@ jobs:
 
   run-migrations:
     docker:
-      image: cimg/node
+      - image: cimg/node
     steps:
       - checkout
       - run:
