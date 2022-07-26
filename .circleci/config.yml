@@ -167,6 +167,10 @@ jobs:
           command: |
             echo "[all]" >> ~/project/.circleci/ansible/inventory.txt
             aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text >> ~/project/.circleci/ansible/inventory.txt
+      - run:
+          name: read the inventory file to the console
+          command: |
+            cat ~/project/.circleci/ansible.txt
       - persist_to_workspace:
           root: ~/
           paths:
