@@ -177,13 +177,13 @@ jobs:
       - destroy_environment
 
   configure-infrastructure:
-    docker: 
+    docker:
       - image: python:3.7-alpine3.11
     steps:
       - checkout
       - add_ssh_keys:
           fingerprints:
-            - '80:6e:da:57:a4:10:00:45:06:43:fd:60:69:6b:88:82'
+            - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
       # - attach_workspace:
       #     at: ~/
       - run:
