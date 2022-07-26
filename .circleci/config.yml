@@ -247,7 +247,7 @@ jobs:
             npm install
             npm run build
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
-            aws s3 cp dist s3://udapeople-eb6a559 --recursive
+            aws s3 cp ./dist s3://udapeople-eb6a559 --recursive
         # hardcoded the former s3 bucket into the script for test purposes. later replace it with: s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
 
 #       # Here's where you will add some code to rollback on failure
