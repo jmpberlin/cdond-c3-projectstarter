@@ -225,6 +225,11 @@ jobs:
           name: install gzip
           command: |
             sudo npm install -g gzip
+
+      - run:
+          name: install python
+          command: |
+            sudo npm install -g python
       - attach_workspace:
           at: ~/
       - run:
