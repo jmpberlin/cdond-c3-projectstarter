@@ -215,7 +215,7 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: circleci/aws-cli@3.1
+      - image: cimg/aws:2022.06
     steps:
       - checkout
       - run:
