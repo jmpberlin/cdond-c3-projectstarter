@@ -268,8 +268,8 @@ jobs:
       - run: 
           name: tar & gzip 
           command: |
-          apk add --update tar 
-          apk add --update gzip 
+            apk add --update tar 
+            apk add --update gzip 
 #       - run:
 #           name: Deploy backend
 #           command: |
