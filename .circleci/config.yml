@@ -261,15 +261,17 @@ jobs:
             - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
       - attach_workspace:
           at: ~/
-      # - run:
-      #     name: Install dependencies
-      #     command: |
-      #       apk add --update ansible
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible
       - run: 
           name: tar & gzip 
           command: |
             apk add --update tar 
             apk add --update gzip 
+            apk add --update node 
+            apk add --update npm
 #       - run:
 #           name: Deploy backend
 #           command: |
