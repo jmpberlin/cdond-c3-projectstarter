@@ -1,6 +1,6 @@
 version: '2.1'
-orbs:
-  aws-cli: circleci/aws-cli@3.1.1
+# orbs:
+#   aws-cli: circleci/aws-cli@3.1.1
 
 commands:
   destroy-environment:
@@ -214,7 +214,8 @@ jobs:
       # Here's where you will add some code to rollback on failure
 
   deploy-frontend:
-    executor: aws-cli/default
+    docker:
+      - image: circleci/aws-cli@3.1.1
     steps:
       - checkout
       - run:
@@ -241,7 +242,7 @@ jobs:
             echo "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
             cat frontend/.env
-      
+
         # hardcoded the former s3 bucket into the script for test purposes. later replace it with: s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
 
 #       # Here's where you will add some code to rollback on failure
