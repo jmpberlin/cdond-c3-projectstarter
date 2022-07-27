@@ -1,6 +1,4 @@
 version: '2.1'
-# orbs:
-#   aws-cli: circleci/aws-cli@3.1.1
 
 commands:
   destroy-environment:
@@ -242,7 +240,14 @@ jobs:
             echo "${API_URL}"
             echo API_URL="http://${BACKEND_IP}:3030" >> frontend/.env
             cat frontend/.env
-
+      - run:
+          name: Deploy frontend objects
+          command: |
+            cd frontend
+            npm install
+            npm run build
+            tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
+            aws s3 cp dist s3://udapeople-eb6a559 --recursive
         # hardcoded the former s3 bucket into the script for test purposes. later replace it with: s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
 
 #       # Here's where you will add some code to rollback on failure
