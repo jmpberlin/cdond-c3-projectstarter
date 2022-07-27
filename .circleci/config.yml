@@ -248,20 +248,28 @@ jobs:
             npm run build
             tar -czvf artifact-"${CIRCLE_WORKFLOW_ID:0:7}".tar.gz dist
             aws s3 cp dist s3://udapeople-eb6a559 --recursive
-        # hardcoded the former s3 bucket into the script for test purposes. later replace it with: s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
+        ##### IMPORTANT ####### hardcoded the former s3 bucket into the script for test purposes. later replace it with: s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
 
 #       # Here's where you will add some code to rollback on failure
-#   deploy-backend:
-#     docker:
-#       # Docker image here that supports Ansible
-#     steps:
-#       # Checkout code from git
-#       # Add ssh keys with fingerprint
-#       # attach workspace
-#       - run:
-#           name: Install dependencies
-#           command: |
-#             # your code here
+  deploy-backend:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
+      - attach_workspace:
+          at: ~/
+      # - run:
+      #     name: Install dependencies
+      #     command: |
+      #       apk add --update ansible
+      - run: 
+          name: tar & gzip 
+          command: |
+          apk add --update tar 
+          apk add --update gzip 
 #       - run:
 #           name: Deploy backend
 #           command: |
@@ -347,9 +355,9 @@ workflows:
       # requires: [deploy-infrastructure]
       # - run-migrations:
       #     requires: [configure-infrastructure]
-      - deploy-frontend
+      # - deploy-frontend:
       #     requires: [run-migrations]
-      # - deploy-backend:
+      - deploy-backend
       #     requires: [run-migrations]
       # - smoke-test:
       #     requires: [deploy-backend, deploy-frontend]
