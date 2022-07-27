@@ -218,9 +218,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: aws-cli
-          command: aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text
-      - run:
           name: install tar & gzip
           command: |
             sudo npm install -g tar
@@ -235,6 +232,9 @@ jobs:
             sudo npm install -g python
       - attach_workspace:
           at: ~/
+      - run:
+          name: aws-cli
+          command: aws ec2 describe-instances --query 'Reservations[*].Instances[*].PublicIpAddress' --output text
       - run:
           name: Get backend url
           command: |
