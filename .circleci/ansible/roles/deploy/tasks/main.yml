@@ -33,8 +33,12 @@
 - name: 'install pm2 manually'
   shell: |
     sudo npm install pm2 -g
+    cd ~/
+    mkdir backend
 
 - name: Copy index test page
   template:
-    src: 'dist'
-    dest: '~/dist'
+    src: '~/project/artifact.tar.gz'
+    dest: '~/backend'
+- name: extract the tar file and start the server
+  shell: |

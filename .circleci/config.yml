@@ -330,6 +330,7 @@ jobs:
             ls -la 
             cd ~/project/backend/
             ls -la
+            cd ~/project/backend/dist 
         # ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
 
         #####
