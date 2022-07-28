@@ -1,10 +1,9 @@
 ---
-- name: extract the tar file and start the server
-  shell: |
-    cd ~/
-    pwd 
-    ls -la
-    mkdir backend
+
+- name: pwd
+  shell: pwd
+- name: ls
+  shell: ls
 # - name: Copy zipped, compiled backend
 #   template:
 #     src: '~/project/artifact.tar.gz'
@@ -44,4 +43,3 @@
   shell: |
     sudo npm install pm2 -g
     cd ~/
-
