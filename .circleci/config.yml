@@ -250,10 +250,10 @@ jobs:
             aws s3 cp dist s3://udapeople-eb6a559 --recursive
         ##### IMPORTANT ####### hardcoded the former s3 bucket into the script for test purposes. later replace it with: s3://udapeople-${CIRCLE_WORKFLOW_ID:0:7}
 
-#       # Here's where you will add some code to rollback on failure
+  #       # Here's where you will add some code to rollback on failure
   deploy-backend:
     docker:
-      - image: python:3.7-alpine3.11
+      - image: circleci/node:13.8.0
     steps:
       - checkout
       - add_ssh_keys:
@@ -261,17 +261,24 @@ jobs:
             - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
       - attach_workspace:
           at: ~/
-      - run:
-          name: Install dependencies
-          command: |
-            apk add --update ansible
+      # - run:
+      #     name: Install dependencies
+      #     command: |
+      #       apk add --update ansible
+      # - run:
+      #     name: tar & gzip
+      #     command: |
+      #       apk add --update tar 
+      #       apk add --update gzip 
+      #       apk add --update node 
+      #       apk add --update npm
       - run: 
-          name: tar & gzip 
+          name: install dependencies - node, npm, tar, gzip, ansible
           command: |
-            apk add --update tar 
-            apk add --update gzip 
-            apk add --update node 
-            apk add --update npm
+            npm install -g tar 
+            npm install -g gzip
+            npm install -g ansible
+            
 #       - run:
 #           name: Deploy backend
 #           command: |
