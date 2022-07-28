@@ -266,12 +266,12 @@ jobs:
           name: Install node, npm
           command: |
             apk add --update nodejs
-
+            apk add --update npm
       - run:
-          name: versions of tar gzip
+          name: installing tar gzip
           command: |
-            tar --version 
-            gzip --version
+            apk add --update tar
+            apk add --update gzip
       # - run:
       #     name: install and update gzip, tar
       #     command: |
