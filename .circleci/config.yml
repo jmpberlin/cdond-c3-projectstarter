@@ -273,8 +273,7 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            cd .circleci/ansible
-            ansible-playbook -vvv -i inventory.txt deploy-backend.yml
+            ansible-playbook -vvvv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
 
           # cd backend
           # npm i
