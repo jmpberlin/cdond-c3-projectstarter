@@ -275,10 +275,10 @@ jobs:
       - run: 
           name: install dependencies - node, npm, tar, gzip, ansible
           command: |
-            npm install -g tar 
-            npm install -g gzip
-            npm install -g ansible
-            
+            sudo npm install -g tar 
+            sudo npm install -g gzip
+            sudo npm install -g ansible
+
 #       - run:
 #           name: Deploy backend
 #           command: |
