@@ -273,8 +273,6 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            echo "Contents  of the inventory.txt file is -------"
-            cat inventory.txt
             ansible-playbook -i inventory.txt deploy-backend.yml
 
           # cd backend
@@ -283,6 +281,8 @@ jobs:
           # cd ..
           # tar -C backend -czvf artifact.tar.gz .
           # cd .circleci/ansible
+          # echo "Contents  of the inventory.txt file is -------"
+          # cat inventory.txt
 
         # Here's where you will add some code to rollback on failure
         ##### ADDED A TEMPORARY INVENTORY FILE FOR TESTING _ REMOVE THE INVENTORY FILE LATER! #######
