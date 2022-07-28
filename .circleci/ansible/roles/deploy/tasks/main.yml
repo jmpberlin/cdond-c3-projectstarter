@@ -3,10 +3,10 @@
   shell: |
     cd ~/
     mkdir backend
-- name: Copy zipped, compiled backend
-  template:
-    src: '~/project/artifact.tar.gz'
-    dest: '~/backend'
+# - name: Copy zipped, compiled backend
+#   template:
+#     src: '~/project/artifact.tar.gz'
+#     dest: '~/backend'
 # - name: Copy index test page
 #   template:
 #     src: '~/project/test.txt'

@@ -315,22 +315,24 @@ jobs:
             touch test-file.txt
             cd ..
             mv dist ~/project/.circleci/ansible/roles/deploy/files
-      - run:
-          name: build backend
-          command: |
-            cd backend
-            npm i
-            npm run build
-            cd ..
-            tar -C backend -czvf artifact.tar.gz .
-            cd .circleci/ansible
-            echo "Contents  of the inventory.txt file is -------"
-            cat inventory.txt 
-            cd ~/project/
-            ls -la 
-            cd ~/project/backend/
-            ls -la
-            cd ~/project/backend/dist
+      # - run:
+      #     name: build backend
+      #     command: |
+      #       cd backend
+      #       npm i
+      #       npm run build
+      #       cd ..
+      #       tar -C backend -czvf artifact.tar.gz .
+      #       cd .circleci/ansible
+      #       echo "Contents  of the inventory.txt file is -------"
+      #       cat inventory.txt 
+      #       cd ~/project/
+      #       ls -la 
+      #       cd ~/project/backend/
+      #       ls -la
+      #       cd ~/project/backend/dist
+      # - store-artifacts: 
+      #     path:  
       - run:
           name: run the playbook
           command:   
