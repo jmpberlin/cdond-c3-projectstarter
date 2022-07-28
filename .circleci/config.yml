@@ -309,39 +309,40 @@ jobs:
       - run:
           name: creating a file, move it into the files foler, see if it is available in the next step
           command: |
-            cd backend
-            mkdir "dist"
-            cd dist 
-            touch test-file.txt
+            mkdir test_artifacts
+            cd test_artifacts
+            touch artifarti.txt
             cd ..
-            mv dist ~/project/.circleci/ansible/roles/deploy/files
+      - store-artifacts:
+        path: ~/project/test_artifacts
       # - run:
       #     name: build backend
       #     command: |
+      #       mkdir artifacts
       #       cd backend
       #       npm i
       #       npm run build
       #       cd ..
       #       tar -C backend -czvf artifact.tar.gz .
-      #       cd .circleci/ansible
-      #       echo "Contents  of the inventory.txt file is -------"
-      #       cat inventory.txt 
-      #       cd ~/project/
-      #       ls -la 
-      #       cd ~/project/backend/
-      #       ls -la
-      #       cd ~/project/backend/dist
-      # - store-artifacts: 
-      #     path:  
-      - run:
-          name: run the playbook
-          command:   
-            ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
+      #       mv ~/project/backend/artifact.tar.gz ~/project/artifacts
+      # cd .circleci/ansible
+      # echo "Contents  of the inventory.txt file is -------"
+      # cat inventory.txt
+      # cd ~/project/
+      # ls -la
+      # cd ~/project/backend/
+      # ls -la
+      # cd ~/project/backend/dist
+      # - store-artifacts:
+      #     path: ~/project/artifacts
+      # - run:
+      #     name: run the playbook
+      #     command: ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
 
-        #####
+      #####
 
-        # Here's where you will add some code to rollback on failure
-        ##### ADDED A TEMPORARY INVENTORY FILE FOR TESTING _ REMOVE THE INVENTORY FILE LATER! #######
+      # Here's where you will add some code to rollback on failure
+      ##### ADDED A TEMPORARY INVENTORY FILE FOR TESTING _ REMOVE THE INVENTORY FILE LATER! #######
 
       # Here's where you will ad
 #   smoke-test:
