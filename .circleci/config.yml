@@ -279,7 +279,7 @@ jobs:
             sudo npm install -g gzip
             sudo npm install -g python3@latest
             python3 --version
-            sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+            sudo curl https://bootstrap.pypa.io/pip/3.5/get-pip.py -o get-pip.py
             python3 get-pip.py --user
             python3 -m pip install --user ansible
             tar --version 
