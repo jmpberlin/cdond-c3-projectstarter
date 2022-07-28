@@ -263,19 +263,20 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
-          name: Install node, npm 
+          name: Install node, npm
           command: |
+            sudo apt-get install sudo
             sudo apt install nodejs      
-            sudp apt install npm 
-      - run: 
-          name: versions of tar gzip 
+            sudo apt install npm
+      - run:
+          name: versions of tar gzip
           command: |
             tar --version 
-            gzip --version 
+            gzip --version
       # - run:
       #     name: install and update gzip, tar
       #     command: |
-      #       sudo npm install -g tar 
+      #       sudo npm install -g tar
       #       sudo npm install -g gzip
       # - run:
       #     name: trying the configure server script
