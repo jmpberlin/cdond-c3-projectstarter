@@ -394,8 +394,8 @@ workflows:
       #     requires: [build-backend]
       # - scan-backend:
       #     requires: [build-backend]
-      # - scan-frontend:
-      #     requires: [build-frontend]
+      - scan-frontend:
+          requires: [build-frontend]
       # - deploy-infrastructure:
       #     requires: [build-frontend, build-backend]
       # filters:
@@ -408,7 +408,7 @@ workflows:
       # - deploy-frontend:
       #     requires: [run-migrations]
       - test-job
-      - deploy-backend
+      - deploy-backend:
           requires: [test-job]
       #     requires: [run-migrations]
       # - smoke-test:
