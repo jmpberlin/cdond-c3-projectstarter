@@ -314,7 +314,7 @@ jobs:
             touch artifarti.txt
             cd ..
       - store_artifacts:
-        path: ~/project/test_artifacts
+          path: ~/project/test_artifacts
       # - run:
       #     name: build backend
       #     command: |
