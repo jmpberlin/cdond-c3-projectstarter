@@ -316,7 +316,7 @@ jobs:
             cd ..
             mv dist ~/project/.circleci/ansible/roles/deploy/files
       - run:
-          name: Deploy backend
+          name: build backend
           command: |
             cd backend
             npm i
@@ -331,6 +331,8 @@ jobs:
             cd ~/project/backend/
             ls -la
             cd ~/project/backend/dist 
+      - run: 
+          name: run the playbook 
             ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
 
         #####

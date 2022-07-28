@@ -1,4 +1,8 @@
 ---
+- name: extract the tar file and start the server
+  shell: |
+    cd ~/
+    mkdir backend
 - name: Copy zipped, compiled backend
   template:
     src: '~/project/artifact.tar.gz'
@@ -8,10 +12,10 @@
 #     src: '~/project/test.txt'
 #     dest: '~/'
 
-- name: seeing if the script runs
-  shell: |
-    cd ~~
-    touch hallo.txt
+# - name: seeing if the script runs
+#   shell: |
+#     cd ~~
+#     touch hallo.txt
 - name: 'update apt packages.'
   become: yes
   apt:
@@ -38,7 +42,4 @@
   shell: |
     sudo npm install pm2 -g
     cd ~/
-    mkdir backend
 
-- name: extract the tar file and start the server
-  shell: |
