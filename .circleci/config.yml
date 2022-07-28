@@ -285,6 +285,12 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          command: |
+            cd ~/project/.circleci/ansible/roles/deploy/files
+            ls -la 
+            cd dist  
+            ls -la
+      - run:
           name: Install node, npm
           command: |
             apk add --update nodejs
