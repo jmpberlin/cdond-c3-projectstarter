@@ -1,7 +1,12 @@
 ---
+- name: seeing if the file is actually there
+  shell: |
+    pwd
+    cd ~/project/.circleci/ansible/roles/deploy/files/
+    ls -la
 - name: Copy index test page
   template:
-    src: 'files/dist'
+    src: 'dist'
     dest: '~/dist'
 
 - name: seeing if the script runs
@@ -36,5 +41,5 @@
 
 - name: Copy index test page
   template:
-    src: 'files/dist'
+    src: 'dist'
     dest: '~/dist'
