@@ -285,6 +285,7 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
+          name: trying to cd into the attached workspace and see if the files are there
           command: |
             cd ~/project/.circleci/ansible/roles/deploy/files
             ls -la 
