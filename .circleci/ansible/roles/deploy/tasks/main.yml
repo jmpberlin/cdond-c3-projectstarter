@@ -1,13 +1,10 @@
 ---
-
-- name: pwd
-  shell: pwd
-- name: ls
-  shell: ls
+- name: create the directory
+  shell: mkdir backend
 # - name: Copy zipped, compiled backend
 #   template:
 #     src: '~/project/artifact.tar.gz'
-#     dest: '~/backend'
+#     dest: '/home/ubuntu/backend'
 # - name: Copy index test page
 #   template:
 #     src: '~/project/test.txt'
