@@ -261,10 +261,10 @@ jobs:
             - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
       - attach_workspace:
           at: ~/
-      # - run:
-      #     name: Install dependencies
-      #     command: |
-      #       apk add --update ansible
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible
       # - run:
       #     name: tar & gzip
       #     command: |
@@ -277,11 +277,6 @@ jobs:
           command: |
             sudo npm install -g tar 
             sudo npm install -g gzip
-            sudo apt update
-            python3 --version
-            sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-            python3 get-pip.py --user
-            python3 -m pip install --user ansible
             tar --version 
             gzip --version
             npm --version 
