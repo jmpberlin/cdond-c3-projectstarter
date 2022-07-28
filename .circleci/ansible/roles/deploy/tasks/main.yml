@@ -2,6 +2,8 @@
 - name: extract the tar file and start the server
   shell: |
     cd ~/
+    pwd 
+    ls -la
     mkdir backend
 # - name: Copy zipped, compiled backend
 #   template:
