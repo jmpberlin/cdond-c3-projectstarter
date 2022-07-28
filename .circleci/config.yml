@@ -253,7 +253,8 @@ jobs:
   #       # Here's where you will add some code to rollback on failure
   deploy-backend:
     docker:
-      - image: circleci/node:13.8.0
+      - image: python:3.7-alpine3.11
+      #### before it was circleci/node:13.8.0
     steps:
       - checkout
       - add_ssh_keys:
@@ -261,20 +262,23 @@ jobs:
             - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
       - attach_workspace:
           at: ~/
+      # - run:
+      #     name: Install ansible
+      #     command: |
+      #       sudo apt install ansible
+      # - run:
+      #     name: install and update gzip, tar
+      #     command: |
+      #       sudo npm install -g tar 
+      #       sudo npm install -g gzip
+      # - run:
+      #     name: trying the configure server script
+      #     command: |
+      #       ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/configure-server.yml
       - run:
-          name: Install ansible
+          name: Install dependencies
           command: |
-            sudo apt install ansible
-      - run:
-          name: install and update gzip, tar
-          command: |
-            sudo npm install -g tar 
-            sudo npm install -g gzip
-      - run:
-          name: trying the configure server script
-          command: |
-            ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/configure-server.yml
-
+            apk add --update ansible
       - run:
           name: Deploy backend
           command: |
