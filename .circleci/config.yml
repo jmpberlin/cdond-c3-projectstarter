@@ -277,8 +277,7 @@ jobs:
           command: |
             sudo npm install -g tar 
             sudo npm install -g gzip
-            sudo npm install -g homebrew
-            sudo brew python3 
+            sudo apt update
             python3 --version
             sudo curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
             python3 get-pip.py --user
