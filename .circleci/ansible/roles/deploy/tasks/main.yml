@@ -1,6 +1,33 @@
 ---
+- name: seeing if the script runs
+  shell: |
+    cd ~~
+    touch hallo.txt
+- name: 'update apt packages.'
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: 'upgrade packages'
+  become: yes
+  apt:
+    upgrade: yes
+
+- name: remove dependencies that are no longer required
+  become: yes
+  apt:
+    autoremove: yes
+- name: 'install dependencies'
+  become: yes
+  apt:
+    name: ['nodejs', 'npm']
+    state: latest
+    update_cache: yes
 ########## sudo apt install pm2 doesnt work out of the box #######
 ########## alternatively I'll do the following:
+- name: 'install pm2 manually'
+  shell: |
+    sudo npm install pm2 -g
 
 - name: Copy index test page
   template:
