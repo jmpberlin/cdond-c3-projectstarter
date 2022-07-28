@@ -262,10 +262,16 @@ jobs:
             - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
       - attach_workspace:
           at: ~/
-      # - run:
-      #     name: Install ansible
-      #     command: |
-      #       sudo apt install ansible
+      - run:
+          name: Install node, npm 
+          command: |
+            sudo apt install nodejs      
+            sudp apt install npm 
+      - run: 
+          name: versions of tar gzip 
+          command: |
+            tar --version 
+            gzip --version 
       # - run:
       #     name: install and update gzip, tar
       #     command: |
