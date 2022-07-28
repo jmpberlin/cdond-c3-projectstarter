@@ -262,18 +262,11 @@ jobs:
       - attach_workspace:
           at: ~/
       - run:
-          name: Install dependencies
+          name: Install ansible
           command: |
             sudo apt install ansible
-      # - run:
-      #     name: tar & gzip
-      #     command: |
-      #       apk add --update tar
-      #       apk add --update gzip
-      #       apk add --update node
-      #       apk add --update npm
       - run:
-          name: install dependencies - node, npm, tar, gzip, ansible
+          name: install and update gzip, tar
           command: |
             sudo npm install -g tar 
             sudo npm install -g gzip
@@ -282,11 +275,19 @@ jobs:
             npm --version 
             node --version 
             ansible --version
-#       - run:
-#           name: Deploy backend
-#           command: |
-#             # your code here
-#       # Here's where you will add some code to rollback on failure
+      - run:
+          name: Deploy backend
+          command: |
+            cd backend
+            npm i
+            npm run build
+            cd ..
+            tar -C backend -czvf artifact.tar.gz .
+            cd .circleci/ansible
+            echo "Contents  of the inventory.txt file is -------"
+            cat inventory.txt
+
+        # Here's where you will add some code to rollback on failure
 
 #   smoke-test:
 #     docker:
