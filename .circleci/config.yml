@@ -318,15 +318,19 @@ jobs:
       - run:
           name: Deploy backend
           command: |
-            ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
-          # cd backend
-          # npm i
-          # npm run build
-          # cd ..
-          # tar -C backend -czvf artifact.tar.gz .
-          # cd .circleci/ansible
-          # echo "Contents  of the inventory.txt file is -------"
-          # cat inventory.txt
+          cd backend
+          npm i
+          npm run build
+          cd ..
+          tar -C backend -czvf artifact.tar.gz .
+          cd .circleci/ansible
+          echo "Contents  of the inventory.txt file is -------"
+          cat inventory.txt 
+          ls -la 
+          cd .. 
+          ls -la
+        # ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
+
         #####
 
         # Here's where you will add some code to rollback on failure
