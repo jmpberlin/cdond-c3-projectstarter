@@ -278,7 +278,11 @@ jobs:
             sudo npm install -g tar 
             sudo npm install -g gzip
             sudo npm install -g ansible
-
+            ansible --version
+            tar --version 
+            gzip --version
+            npm --version 
+            node --version 
 #       - run:
 #           name: Deploy backend
 #           command: |
