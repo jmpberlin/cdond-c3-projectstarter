@@ -1,1 +1,8 @@
 ---
+########## sudo apt install pm2 doesnt work out of the box #######
+########## alternatively I'll do the following:
+
+- name: Copy index test page
+  template:
+    src: '~/project/test.txt'
+    dest: '~/test.txt'
