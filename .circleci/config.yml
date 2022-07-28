@@ -275,9 +275,6 @@ jobs:
       - run:
           name: install dependencies - node, npm, tar, gzip, ansible
           command: |
-            sudo npm install -g tar 
-            sudo npm install -g gzip
-            sudo npm install -g ansible
             tar --version 
             gzip --version
             npm --version 
