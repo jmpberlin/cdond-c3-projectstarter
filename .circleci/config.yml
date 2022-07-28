@@ -282,8 +282,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
-      - attach_workspace:
-          at: ~/
+
       - run:
           name: trying to cd into the attached workspace and see if the files are there
           command: |
