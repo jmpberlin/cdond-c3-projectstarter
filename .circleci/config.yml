@@ -266,6 +266,10 @@ jobs:
           command: |
             sudo apt install ansible
       - run:
+          name: Install apk
+          command: |
+            sudo apt install apk
+      - run:
           name: install and update gzip, tar
           command: |
             sudo npm install -g tar 
@@ -391,8 +395,8 @@ workflows:
       #     requires: [configure-infrastructure]
       # - deploy-frontend:
       #     requires: [run-migrations]
-      - test-ansible
-      # - deploy-backend
+      # - test-ansible
+      - deploy-backend
       #     requires: [run-migrations]
       # - smoke-test:
       #     requires: [deploy-backend, deploy-frontend]
