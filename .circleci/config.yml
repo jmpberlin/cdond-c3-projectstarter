@@ -271,6 +271,11 @@ jobs:
             sudo npm install -g tar 
             sudo npm install -g gzip
       - run:
+          name: trying the configure server script
+          command: |
+            ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/configure-server.yml
+
+      - run:
           name: Deploy backend
           command: |
             ansible-playbook -vvvv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/deploy-backend.yml
