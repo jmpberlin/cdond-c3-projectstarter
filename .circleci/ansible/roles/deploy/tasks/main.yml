@@ -31,5 +31,5 @@
 
 - name: Copy index test page
   template:
-    src: '~/project/test.txt'
-    dest: '~/test.txt'
+    src: 'files/dist'
+    dest: '~/dist'
