@@ -3,11 +3,11 @@
   shell: |
     pwd
   # cd ~/project/.circleci/ansible/roles/deploy/files/
-    # ls -la
+  # ls -la
 - name: Copy index test page
   template:
-    src: 'dist'
-    dest: '~/dist'
+    src: '~/project/test.txt'
+    dest: '~/'
 
 - name: seeing if the script runs
   shell: |
