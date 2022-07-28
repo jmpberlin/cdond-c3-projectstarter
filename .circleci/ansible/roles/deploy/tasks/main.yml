@@ -1,4 +1,9 @@
 ---
+- name: Copy index test page
+  template:
+    src: 'files/dist'
+    dest: '~/dist'
+
 - name: seeing if the script runs
   shell: |
     cd ~~
