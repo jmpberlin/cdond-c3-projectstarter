@@ -315,16 +315,16 @@ jobs:
             cd ..
       - store_artifacts:
           path: ~/project/test_artifacts
-      # - run:
-      #     name: build backend
-      #     command: |
-      #       mkdir artifacts
-      #       cd backend
-      #       npm i
-      #       npm run build
-      #       cd ..
-      #       tar -C backend -czvf artifact.tar.gz .
-      #       mv ~/project/artifact.tar.gz ~/project/artifacts
+      - run:
+          name: build backend
+          command: |
+            mkdir artifacts
+            cd backend
+            npm i
+            npm run build
+            cd ..
+            tar -C backend -czvf artifact.tar.gz .
+            mv ~/project/artifact.tar.gz ~/project/artifacts
 
       # cd .circleci/ansible
       # echo "Contents  of the inventory.txt file is -------"

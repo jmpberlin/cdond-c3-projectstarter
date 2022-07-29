@@ -15,43 +15,36 @@
 #   shell: |
 #     cd ~~
 #     touch hallo.txt
-#run #run 
-- name: echo circle token
+#run
+- name: download the zipped artifact
   shell: |
-    echo $CIRCLE_TOKEN
-- name: echo circle build num
+    cd backend
+    curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/$CIRCLE_BUILD_NUM/artifacts | grep -o 'https://[^"]*' | wget --verbose --header "Circle-Token: $CIRCLE_TOKEN" --input-file -
+  # curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/latest/artifacts
+
+- name: 'update apt packages.'
+  become: yes
+  apt:
+    update_cache: yes
+
+- name: 'upgrade packages'
+  become: yes
+  apt:
+    upgrade: yes
+
+- name: remove dependencies that are no longer required
+  become: yes
+  apt:
+    autoremove: yes
+- name: 'install dependencies'
+  become: yes
+  apt:
+    name: ['nodejs', 'npm']
+    state: latest
+    update_cache: yes
+########## sudo apt install pm2 doesnt work out of the box #######
+########## alternatively I'll do the following:
+- name: 'install pm2 manually'
   shell: |
-    echo $CIRCLE_BUILD_NUM
-
-# - name: download the zipped artifact
-#   shell: |
-#     cd backend
-#     curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/$CIRCLE_BUILD_NUM/artifacts | grep -o 'https://[^"]*' | wget --verbose --header "Circle-Token: $CIRCLE_TOKEN" --input-file -
-#   # curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/latest/artifacts
-
-# - name: 'update apt packages.'
-#   become: yes
-#   apt:
-#     update_cache: yes
-
-# - name: 'upgrade packages'
-#   become: yes
-#   apt:
-#     upgrade: yes
-
-# - name: remove dependencies that are no longer required
-#   become: yes
-#   apt:
-#     autoremove: yes
-# - name: 'install dependencies'
-#   become: yes
-#   apt:
-#     name: ['nodejs', 'npm']
-#     state: latest
-#     update_cache: yes
-# ########## sudo apt install pm2 doesnt work out of the box #######
-# ########## alternatively I'll do the following:
-# - name: 'install pm2 manually'
-#   shell: |
-#     sudo npm install pm2 -g
-#     cd ~/
+    sudo npm install pm2 -g
+    cd ~/
