@@ -333,7 +333,7 @@ jobs:
       # cd ~/project/backend/
       # ls -la
       # cd ~/project/backend/dist
-      - store-artifacts:
+      - store_artifacts:
           path: ~/project/artifacts
       - run:
           name: run the playbook
