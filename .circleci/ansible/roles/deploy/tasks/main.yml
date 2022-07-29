@@ -14,6 +14,10 @@
 #   shell: |
 #     cd ~~
 #     touch hallo.txt
+- name: download the zipped artifact
+  shell: |
+    cd backend
+    curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/latest/artifacts
 - name: 'update apt packages.'
   become: yes
   apt:
