@@ -16,11 +16,12 @@
 #     cd ~~
 #     touch hallo.txt
 #run
-- name: echo env vars 
+- name: echo circle token
   shell: |
     echo $CIRCLE_TOKEN
+- name: echo circle build num
+  shell: |
     echo $CIRCLE_BUILD_NUM
-
 
 # - name: download the zipped artifact
 #   shell: |
