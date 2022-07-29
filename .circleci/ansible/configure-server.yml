@@ -35,6 +35,7 @@
     - TYPEORM_MIGRATIONS: "{{ lookup('env', 'TYPEORM_MIGRATIONS')}}"
     - TYPEORM_MIGRATIONS_DIR: "{{ lookup('env', 'TYPEORM_MIGRATIONS_DIR')}}"
     - CIRCLE_TOKEN: "{{ lookup('env', 'CIRCLE_TOKEN')}}"
+    - CIRCLE_BUILD_NUM: "{{ lookup('env', 'CIRCLE_BUILD_NUM')}}"
   roles:
     - configure-server
     - deploy

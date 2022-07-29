@@ -1,4 +1,6 @@
 ---
+######## IMPORTANT: TO TEST I REMOVED THE CREATION OF THE BACKEND DIRECTORY _ IN PRODUCTION IT HAS TO BE BACK ######
+
 # - name: create the directory
 #   shell: mkdir backend
 # - name: Copy zipped, compiled backend
@@ -14,35 +16,41 @@
 #     cd ~~
 #     touch hallo.txt
 #run
-- name: download the zipped artifact
+- name: echo env vars 
   shell: |
-    cd backend
-    curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/latest/artifacts
-  # curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/$CIRCLE_BUILD_NUM/artifacts | grep -o 'https://[^"]*' | wget --verbose --header "Circle-Token: $CIRCLE_TOKEN" --input-file -
+    echo $CIRCLE_TOKEN
+    echo $CIRCLE_BUILD_NUM
 
-- name: 'update apt packages.'
-  become: yes
-  apt:
-    update_cache: yes
 
-- name: 'upgrade packages'
-  become: yes
-  apt:
-    upgrade: yes
+# - name: download the zipped artifact
+#   shell: |
+#     cd backend
+#     curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/$CIRCLE_BUILD_NUM/artifacts | grep -o 'https://[^"]*' | wget --verbose --header "Circle-Token: $CIRCLE_TOKEN" --input-file -
+#   # curl -H "Circle-Token: $CIRCLE_TOKEN" https://circleci.com/api/v1.1/project/github/jmpberlin/cdond-c3-projectstarter/latest/artifacts
 
-- name: remove dependencies that are no longer required
-  become: yes
-  apt:
-    autoremove: yes
-- name: 'install dependencies'
-  become: yes
-  apt:
-    name: ['nodejs', 'npm']
-    state: latest
-    update_cache: yes
-########## sudo apt install pm2 doesnt work out of the box #######
-########## alternatively I'll do the following:
-- name: 'install pm2 manually'
-  shell: |
-    sudo npm install pm2 -g
-    cd ~/
+# - name: 'update apt packages.'
+#   become: yes
+#   apt:
+#     update_cache: yes
+
+# - name: 'upgrade packages'
+#   become: yes
+#   apt:
+#     upgrade: yes
+
+# - name: remove dependencies that are no longer required
+#   become: yes
+#   apt:
+#     autoremove: yes
+# - name: 'install dependencies'
+#   become: yes
+#   apt:
+#     name: ['nodejs', 'npm']
+#     state: latest
+#     update_cache: yes
+# ########## sudo apt install pm2 doesnt work out of the box #######
+# ########## alternatively I'll do the following:
+# - name: 'install pm2 manually'
+#   shell: |
+#     sudo npm install pm2 -g
+#     cd ~/
