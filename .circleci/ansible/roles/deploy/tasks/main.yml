@@ -1,6 +1,6 @@
 ---
-- name: create the directory
-  shell: mkdir backend
+# - name: create the directory
+#   shell: mkdir backend
 # - name: Copy zipped, compiled backend
 #   template:
 #     src: '~/project/artifact.tar.gz'
