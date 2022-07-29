@@ -15,7 +15,7 @@
 #   shell: |
 #     cd ~~
 #     touch hallo.txt
-#run
+#run #run 
 - name: echo circle token
   shell: |
     echo $CIRCLE_TOKEN
