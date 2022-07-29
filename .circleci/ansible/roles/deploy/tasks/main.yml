@@ -13,6 +13,7 @@
 #   shell: |
 #     cd ~~
 #     touch hallo.txt
+#run
 - name: download the zipped artifact
   shell: |
     cd backend
