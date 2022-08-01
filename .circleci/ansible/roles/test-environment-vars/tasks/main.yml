@@ -1,5 +1,4 @@
 ---
----
 - name: print all env vars
   shell: |
     printenv
