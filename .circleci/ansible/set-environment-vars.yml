@@ -34,4 +34,4 @@
     - CIRCLE_TOKEN: "{{ lookup('env', 'CIRCLE_TOKEN')}}"
     - CIRCLE_BUILD_NUM: "{{ lookup('env', 'CIRCLE_BUILD_NUM')}}"
   roles:
-    - test-environment-vars
+    - deploy

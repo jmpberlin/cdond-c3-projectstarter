@@ -273,6 +273,21 @@ jobs:
           root: ~/
           paths:
             - project/.circleci/ansible/roles/deploy/files/
+  test-environment-vars:
+    docker:
+      - image: python:3.7-alpine3.11
+    steps:
+      - checkout
+      - add_ssh_keys:
+          fingerprints:
+            - '15:19:28:b3:5c:f0:5d:8f:3d:0f:a3:d0:35:bb:68:2b'
+      - run:
+          name: Install dependencies
+          command: |
+            apk add --update ansible
+      - run:
+          name: run the playbook
+          command: ansible-playbook -vv -i ~/project/.circleci/ansible/inventory.txt ~/project/.circleci/ansible/set-environment-vars.yml
 
   deploy-backend:
     docker:
@@ -430,10 +445,11 @@ workflows:
       # - deploy-frontend:
       #     requires: [run-migrations]
       # - test-job
+      - test-environment-vars
       # - deploy-backend
       # requires: [test-job]
       #     requires: [run-migrations]
-      - smoke-test
+      # - smoke-test
       #     requires: [deploy-backend, deploy-frontend]
       # - cloudfront-update:
       #     requires: [smoke-test]
